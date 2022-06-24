@@ -1,0 +1,304 @@
+<!-- input validation initally workedas intended then something proke.
+Curently the cursor does not reurn to bad input fileds and form submit for all inputs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Input Value Validation</title>
+	<link rel="stylesheet" type="text/css" href="hw4_styles.css">
+	<script src="/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<!-- Html slider inteded to match user input to toble.
+each end with a min and max range -->
+<div class="middle">
+	<div class="multi-range-slider">
+		<input type="range" id="input-left" min="-50" max="50" value="25">
+		<input type="range" id="input-right" min="-50" max="50" value="10">
+
+		<div class="slider">
+			<div class="track"></div>
+			<div class="range"></div>
+			<div class="thumb left"></div>
+			<div class="thumb right"></div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- input form to take user input and valide their values -->
+	<div class="container">
+		<h2>Enter Four Numric Values For Table</h2>
+  
+		<form id="inputForm">
+			<div>
+				<input type="text" id="num1" name="" class="percentage" required="" value="">
+				<span class="error_form" id="err1"></span> 
+				<label> First Column value</label>	
+			</div>
+      <div>
+				<input type="text" id="num2" name="" class="percentage" required="" value="">
+				<span class="error_form" id="err2"></span> 
+				<label> First Column value</label>	
+			</div>
+      <div>
+				<input type="text" id="num3" name="" class="percentage" required="" value="">
+				<span class="error_form" id="err3"></span> 
+				<label> First Column value</label>	
+			</div>
+      <div>
+				<input type="text" id="num4" name="" class="percentage" required="" value="">
+				<span class="error_form" id="err4"></span> 
+				<label> First Column value</label>	
+			</div>
+			
+			<input type="submit" value="Submit" name="">
+		</form>
+	</div>
+
+  <div id="table-container">
+            
+    <table>
+      <tbody>
+        
+      </tbody>
+    </table>
+  
+  </div>
+
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+	<script type="text/javascript">
+
+      $(function() {
+        // initially keep error message supress from user
+         $("#err1").hide();
+         $("#err2").hide();
+         $("#err3").hide();
+         $("#err4").hide();
+
+         var errNum1 = false;
+         var errNum2 = false;
+         var errNum3 = false;
+         var errNum4 = false;
+
+         // If user input invalid vharaters this retrn user to input field
+         $("#num1").focusout(function(){
+          inputCheck1();
+         });
+         $("#num2").focusout(function(){
+          inputCheck2();
+         });
+         $("#num3").focusout(function(){
+          inputCheck3();
+         });
+         $("#num4").focusout(function(){
+          inputCheck4();
+         });
+         
+         ////////////1 Check user input and set the condition if values is NAN then append to user input to confirm 
+         //if is NAN then alert user to enter valid num. I finput is valid error remains suppressed returning true(repeat for all four inputs)
+         function inputCheck1() {
+            var numCheck1 = /^\d*$/;
+            var check1 = $("#num1").val();
+            console.log(numCheck1);
+            console.log(numCheck1.test(check1));
+            console.log(check1);
+
+            if (numCheck1.test(check1) && check1 !== '') {
+              $("#err1").hide();
+              $("#num1").css("border-bottom","2px solid #34F458");
+            }
+             else {
+               $("#err1").html("Number only");
+               $("#err1").show();
+               $("#num1").css("border-bottom","2px solid red");
+               errNum1 = false;
+            }
+         } 
+         ////////////2
+         function inputCheck2() {
+            var numCheck2 = /^\d*$/;
+            var check2 = $("#num2").val();
+            if (numCheck2.test(check2) && check2 !== '') {
+              $("#err2").hide();
+              $("#num2").css("border-bottom","2px solid #34F458");
+            }
+             else {
+               $("#err2").html("Number only");
+               $("#err2").show();
+               $("#num2").css("border-bottom","2px solid red");
+               errNum2 = false;
+            }
+         } 
+         ////////3
+         function inputCheck3() {
+            var numCheck3 = /^\d*$/;
+            var check3 = $("#num3").val();
+            if (numCheck3.test(check3) && check3 !== '') {
+              $("#err3").hide();
+              $("#num3").css("border-bottom","2px solid #34F458");
+            }
+             else {
+               $("#err3").html("Number only");
+               $("#err3").show();
+               $("#num3").css("border-bottom","2px solid red");
+               errNum3 = false;
+            }
+         }
+         ///////////////4
+         function inputCheck4() {
+            var numCheck4 = /^\d*$/;
+            var check4 = $("#num4").val();
+            if (numCheck4.test(check4) && check4 !== '') {
+              $("#err4").hide();
+              $("#num4").css("border-bottom","2px solid #34F458");
+            }
+             else {
+               $("#err4").html("Number only");
+               $("#err4").show();
+               $("#num4").css("border-bottom","2px solid red");
+               errNum4 = false;
+            }
+         }
+         //innitializes to false then check input values
+         $("#inputForm").submit(function() {
+            errorOfnunm1 = false;
+            errorOfnunm2 = false;
+            errorOfnunm3 = false;
+            errorOfnunm4 = false;
+
+            inputCheck1();
+            inputCheck2();
+            inputCheck3();
+            inputCheck4();
+
+          //If no error occured form is valid
+            if (errorOfnunm1 === false && errorOfnunm2 === false && errorOfnunm3 === false && errorOfnunm4 === false){
+              //function multiplyTable_1();
+              alert("SUCCESSs");
+               return true;
+               
+            } else {
+               alert("Please Fill the form Correctly");
+               return false;
+            }
+
+         });
+         //Intended to validate the input range from user -5 to 50 by making input required function
+         $("#inputForm").validate({
+        rules: {
+        percentage: {
+        required: true,
+        range: [-50, 50]
+    }
+  }
+});
+         });
+         ////////////////baring none integer inputs
+//If all input pass validation then is paseed to table
+  var a1 =  document.getElementById('num1').value;
+  var a2 =  document.getElementById('num2').value;
+  var a3 =  document.getElementById('num3').value;
+  var a4 =  document.getElementById('num4').value;
+
+
+  function multiplyTable_1(a1,b1,c1,d1) {
+  var table1 = document.getElementsByTagName("TABLE")[0];
+
+  var descendants = document.getElementsByTagName('tbody')[0];//.getElementsByTagName("*");
+  console.log(descendants);
+  descendants.remove();
+
+  // each value is innitialize in table
+  console.log(table1);
+  row = table1.insertRow(-1);
+  row.insertCell(-1).textContent=a1;
+  row.insertCell(-1).textContent=b1;
+  row = table1.insertRow(-1);
+  row.insertCell(-1).textContent=c1;
+  row.insertCell(-1).textContent=d1;
+}
+
+    function multiplyTable(a1,b1,c1,d1) {
+      a1 = parseInt(a1);//Parsint ensure input values are neterd as numerical integer
+      b1 = parseInt(b1);
+      c1 = parseInt(c1);
+      d1 = parseInt(d1);
+      //Establishes table first position value. Fucus return cusor to opropriate field to be inputed
+      var table1 = document.getElementsByTagName("TABLE")[0];
+     var para1 = document.getElementById("para");
+    if(a1 > b1){ //Ensures end valus is not less than starting value for colums
+      document.getElementById('para1').innerHTML = "First Column Number Greater Than Second";
+      document.getElementById("a").focus();
+      return;
+    }//Ensures values is not greater than or less than the table limit |50|
+      if(a1 < -50 || a1 > 50){ 
+        document.getElementById('para1').innerHTML = "First Column Number Out of Bound";
+        document.getElementById("a").focus();
+        return;
+      }
+      if(b1 < -50 || b1 > 50){ 
+        document.getElementById('para2').innerHTML = "Second Column Number Out of Bound";
+        document.getElementById("b").focus();
+        return;
+      }
+      if(c1 > d1){//Ensures end valus is not less than starting value for rows
+        document.getElementById('para1').innerHTML = "First Column Number Greater Than Second";
+        document.getElementById("c").focus();
+        return;
+      }
+      if(c1 < -50 || c1 > 50){ 
+        document.getElementById('para3').innerHTML = "First Row Number Out of Bound";
+        document.getElementById("c").focus();
+        return;
+      }
+      if(d1 < -50 || d1 > 50){ 
+        document.getElementById('para4').innerHTML = "Second Row Number Out of Bound";
+        document.getElementById("d").focus();
+        return;
+      }
+      //Prior to append descendants.remove() remove prior values from table
+
+      descendants = document.getElementsByTagName('tbody')[0];
+      console.log(descendants);
+      descendants.remove();
+
+      console.log(d1.value);
+      console.log(d1);
+      console.log(table1);
+     
+      /*Loops check for condition of table bound for starting columns based
+      on inputed values then multiply the coresponding rows and columns then append to 
+      table each value */
+      console.log(table1);
+      row = table1.insertRow();
+      for (let y = c1; y <= d1; y++) {
+        if(y === c1 ){
+          row.insertCell().textContent='';
+        }
+        row.insertCell().textContent=y;
+        
+      }
+      for (let x = a1; x <= b1; x++) {
+        row = table1.insertRow();
+        row.insertCell().textContent = x;
+        for(let y=c1; y<=d1; y++){
+          row.insertCell().textContent = x*y;
+        }
+      }
+      console.log(table1);
+
+    }
+    multiplyTable(1,10,1,10)
+
+    
+
+   </script>
+
+
+</body>
+</html>

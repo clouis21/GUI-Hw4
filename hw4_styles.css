@@ -1,0 +1,249 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: url(images.jfif);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.container
+{
+	position:absolute;
+	top: 45%;
+	left: 15%;
+	transform: translate(-50%,-50%);
+	width: 400px;
+	background: #fff;
+	padding: 45px;
+	box-sizing: border-box;
+	border :1px solid rgba(0,0,0,.1);
+	box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.container h2
+{
+	text-align: left;
+	margin: 0 0 40px;
+	padding: 0;
+	color: rgb(66,133,244);
+	letter-spacing: 2px;
+}
+.container input
+{
+	padding: 5px;
+	margin-bottom: 30px;
+	width: 55%;
+	box-sizing: border-box;
+	box-shadow: none;
+	outline: none;
+	border:none;
+	border-bottom: 2px solid #999;
+}
+.container input[type="submit"]
+{
+	border-radius: 25px;
+	font-size: 20px;
+	height: 40px;
+	cursor : pointer;
+	background: rgb(66,133,244);
+	color: #fff;
+	margin-bottom: 0;
+}
+.container input[type="submit"]:hover
+{
+	background: #34F458;
+	color: #fff;
+}
+.container form div
+{
+	position: relative;
+}
+.container form div label
+{
+	position: absolute;
+	top: 3px;
+	pointer-events: none;
+	left: 0;
+	transition: .5s;
+}
+.container input:focus ~label,
+.container input:valid ~label
+{
+	left: 0;
+	top: -20px;
+	color: rgb(66,133,244);
+	font-size: 12px;
+	font-weight: bold;
+}
+.container input:focus,
+.container input:valid
+{
+	border-bottom: 2px solid rgb(66,133,244);
+}
+.error_form
+{
+	top: 12px;
+	color: rgb(216, 15, 15);
+    font-size: 15px;
+    font-family: Helvetica;
+} 
+/* table stylin ////////////////////////*/
+/* paragraph and header styling */
+.header1{ 
+  color: blue;
+}
+.header2{
+  
+  color: blue;
+  font-size: 15px;
+}
+
+/* Allignes table and input form side by side and remove gap between cells.
+This also sets table max height and prevents over flow of table when values get excerssively too large */
+table{
+  display: flex;
+  border-collapse: collapse;
+  text-align: center;
+  height: 500px;
+  overflow-y: scroll;
+
+}
+
+/* Higlights alternating rows */
+tr:nth-child(even) {  
+  background-color:#51b39a;  
+}
+table, th, td {
+  border: 1px solid black;
+  width: 860px;
+}
+/* Formatas table and form simultaniously to create even spacing and set border */
+#formId, #table-container{
+  padding: 1rem;
+  vertical-align: middle;
+  width: 90%;
+  margin: 12px;
+}
+
+#table-container{
+  table-layout:fixed;
+
+}
+
+label{
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+
+}
+
+.wrapper{
+  display: flex;
+  width: 100%;
+}
+tbody>:nth-child(1){
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+
+  
+}
+
+td:nth-child(1) {  background-color: black;
+  color: white }
+  table tbody tr:first-child td:nth-child(1) {
+    background-color: white;
+    border: 1px solid white;
+  }
+
+#copyRight{
+  border: 1px black solid;
+  position: absolute;
+  bottom: 5%;
+  right: 2%;
+}
+/* slider styling ///////////////////////////////////////*/
+body {
+	margin: 40px;
+	padding: 0;
+	height: 100vh;
+	display: flex;
+	align-items: top;
+}
+
+.middle {
+	position: relative;
+	width: 50%;
+	max-width: 500px;
+}
+
+.slider {
+	position: relative;
+	z-index: 1;
+	height: 10px;
+	margin: 0 15px;
+}
+.slider > .track {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	border-radius: 5px;
+	background-color: #c6aee7;
+}
+.slider > .range {
+	position: absolute;
+	z-index: 2;
+	left: 25%;
+	right: 25%;
+	top: 0;
+	bottom: 0;
+	border-radius: 5px;
+	background-color: #6200ee;
+}
+.slider > .thumb {
+	position: absolute;
+	z-index: 3;
+	width: 30px;
+	height: 30px;
+	background-color: #6200ee;
+	border-radius: 50%;
+	box-shadow: 0 0 0 0 rgba(98,0,238,.1);
+	transition: box-shadow .3s ease-in-out;
+}
+.slider > .thumb.left {
+	left: 25%;
+	transform: translate(-15px, -10px);
+}
+.slider > .thumb.right {
+	right: 25%;
+	transform: translate(15px, -10px);
+}
+.slider > .thumb.hover {
+	box-shadow: 0 0 0 20px rgba(98,0,238,.1);
+}
+.slider > .thumb.active {
+	box-shadow: 0 0 0 40px rgba(98,0,238,.2);
+}
+
+input[type=range] {
+	position: absolute;
+	pointer-events: none;
+	-webkit-appearance: none;
+	z-index: 2;
+	height: 10px;
+	width: 100%;
+	opacity: 0;
+}
+input[type=range]::-webkit-slider-thumb {
+	pointer-events: all;
+	width: 30px;
+	height: 30px;
+	border-radius: 0;
+	border: 0 none;
+	background-color: red;
+	-webkit-appearance: none;
+}
+
